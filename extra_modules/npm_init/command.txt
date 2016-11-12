@@ -1,0 +1,22 @@
+npm init 
+입력하면
+
+package.json 생성됨
+
+npm install하면 이파일 참조해서 모듈 자동 설치함
+
+.json의 scripts 속성은 npm 명령어를 사용해 실행할 명령을 지정하는 것임
+
+ex) npm test
+
+이후에 설치하는 모듈을 .json에 기록하고 싶다면
+
+npm install 모듈명 --save 옵션 주면됨
+
+그럼 dependencies 속성에 기록이 됨
+
+
+////////////////
+
+참고로 npm 자체를 업뎃 할 땐, npm instlal -g npm
+
