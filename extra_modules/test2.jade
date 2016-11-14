@@ -1,0 +1,13 @@
+doctype html
+html
+	head
+		title Index Page
+	body
+		// Jade string
+		h1 #{name} .. !
+		h2= name
+		hr
+		- for (var i = 0; i < 10 ; i++){
+				p
+					a(href="http://naver.com") Go to naver #{i}
+		- }
