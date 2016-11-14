@@ -1,0 +1,13 @@
+Representational State Transfer
+
+일관된 웹 서비스 인터페이스 설계
+
+GET			/user 			; 모든 사용자 정보 조회
+GET			/user/:id		; 특정 사용자 정보 조회
+POST		/user				; 사용자를 추가
+PUT			/user/:id		; 특정 사용자 정보 수정
+DELETE	/user/:id		; 특정 사용자 정보 제거
+
+
+메소드로서 자원에 대한 연산을 포현하는
+자원 중심적 설계?
