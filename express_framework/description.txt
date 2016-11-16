@@ -1,0 +1,33 @@
+프레임 워크란
+Inverse of Control 제어 역전 방식으로 개발할 수 있게 하는 라이브러리
+
+지금까지는 모두 직접 가져와서 내부의 메서드를 호출하는 방식(제어)
+
+라이브러리가 '기본 구조를 만들어 주고 필요한 부분만 작성하는' 것이 제어역전
+
+이러한 라이브러리를 프레임워크라고 함
+
+http://expressjs.com/
+
+$ sudo npm install -g express-generator@4
+
+$ express '프로젝트 이름' 형태로 프로젝트 생성
+
+$ cd 프로젝트이름 && npm install 입력해서 관련 모듈 설치
+
+생성한 프로젝트 실행은 
+
+$ DEBUG=프로젝트이름:* npm start
+
+start 명령을 입력하면 package.json의 scripts 객체의 start 속성에 적힌 명령이 실행되는 것임
+./bin/www
+
+글고 실행할 때
+DEBUG=HelloExpress:* 는 DEBUG라는 이름의 환경 변수를 설정하는 것임
+이렇게 설정한 환경 변수는 'ECHO %DEBUG%'로 출력함
+
+아래 두 줄과 같은 일을 함
+export 변수이름=값
+echo $변수이름
+
+이렇게 설정한 환경 변수는 현재 세션에서만 유효함
