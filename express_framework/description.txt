@@ -31,3 +31,27 @@ export 변수이름=값
 echo $변수이름
 
 이렇게 설정한 환경 변수는 현재 세션에서만 유효함
+
+
+
+
+
+
+
+
+그리고, express --help 치면 여러가지 도움말 나오고
+
+여러 옵션이 있는데,
+
+--help 도움말
+
+-e / --ejs 는 ejs 템플릿 엔진 사용
+--hbs 는 handlebars 템플릿 엔진 사용
+-h / --hogan 는 hogan.js 템플릿 엔진 사용
+-c <engine> / --css<engine> 은 스타일 시트 엔진 사용
+--git 은 .gitignore 파일 함께 생성
+-f / --force 이미 존재할 경우 덮어쓰기
+
+요런 옵션이 있고
+
+express -e --git HellowExpress 이런식으로 프로젝트 생성할 때 쓴다
