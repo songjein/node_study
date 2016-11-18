@@ -60,15 +60,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);			// 사용자가 GET 방식으로 '/ URL'에 요청했을 경우 index 모듈 제공
 app.use('/users', users);		
 
-// 단일 페이지 렌더링 추가
-// 단일 페이지 렌더링 추가
-// 단일 페이지 렌더링 추가
 /*
 	express 프레임워크는 자체적으로 
 	File System 모듈을 사용해 페이지를 제공하는 render() 제공!
 */
 app.get('/product', function(req, res){
 	res.render('product', {title: 'product page'});
+});
+
+app.get('/product/insert', function(req, res){
+	res.render('product/insert', {title: 'insert page'});
+});
+
+app.get('/product/edit', function(req, res){
+	res.render('product/edit', {title: 'edit page'});
 });
 
 // 404 에러 출력
