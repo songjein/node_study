@@ -7,9 +7,22 @@
 		window.onload = function(){
 			// 웹 소켓 서버에 연결 
 			var socket = io.connect();		
+
+			// socket 이벤트 연결
+			socket.on('abcde', function(data){
+				alert(data);
+			});
+
+			document.getElementById('button').onclick = function(){
+				var text = document.getElementById('text').value;
+				// 데이터 전송
+				socket.emit('abc', text);
+			};
 		};
 	</script>
 </head>
 <body>
+	<input type="text" id="text"/>
+	<input type="button" id="button" value="echo" />
 </body>
 </html>
