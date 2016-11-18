@@ -1,0 +1,36 @@
+express 프레임워크는 기본적으로
+development 와 production 실행 환경을 제공함
+
+dev 모드는 view cache 사용 x 
+production 모드는 view cache 사용
+
+디버그 모드는 dev 모드에선 설정하면 사용가능하고
+production 모드에선 사용 불가
+
+
+뷰 캐시란?
+첫 번째 요청부터 파일을 읽어 메모리에 한번만 올려두고
+두 번째 이후 요청부터는 입출력 부하가 없어져서 요청이 빨라짐!
+(수정사항 자동 반영x)
+
+
+development 환경은 기본 설정임
+production 환경으로 실행할 땐, 
+################################
+export NODE_ENV=development or production
+npm start
+################################
+라고 실행하면 됨
+
+만약 
+DEBUG 환경 변수를 설정했다면, development 환경에서 디버그 모드로 실행되고 로그가 출력됨!
+DEBUG 환경 변수를 설정했다면, development 환경에서 디버그 모드로 실행되고 로그가 출력됨!
+DEBUG 환경 변수를 설정했다면, development 환경에서 디버그 모드로 실행되고 로그가 출력됨!
+
+어떤 모드로 실행되는지 궁금 할 땐 app.get('env')
+
+프로젝트 배포시엔 그냥
+app.settings.env = 'production'; 
+app.settings.env = 'production'; 
+app.settings.env = 'production'; 
+으로 하드코딩 해버리셈!
