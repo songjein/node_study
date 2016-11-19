@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat Chat </title>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		$(function(){
+			var socket = io.connect();	
+	
+			socket.on('message', function(data){
+				var output = '';			
+				output += '<li>';
+				output += '	<p>';
+				output += '	  <strong>' + data.name + ' : </strong>';
+				output += 		data.message;
+				output += ' </p>';
+				//output +=	'	<p>' + data.date + '</p>';
+				output +=	'</li>';
+				$(output).prependTo('#content');
+			});
+
+			$('button').click(function(){
+				socket.emit('message', {
+					name: $('#name').val(),	
+					message: $('#message').val(),	
+					date: new Date().toUTCString() 
+				});	
+			});
+		});
+	</script>
+</head>
+<body>
+	<img style="width:200px" src="https://cdn.namuwikiusercontent.com/47/476c72a75e8d38247c4a21ae1fbcd8dab3e1112f94fbdfcae76c3e0f0b16135c.jpg?e=1483760025&k=mf_VJMeclp0GYj_8G_oWRQ">
+	<h1>하시와 채팅 합시다<h1>	
+	<hr>
+	<input id="name" placeholder="이름"/>
+	<input id="message" placeholder="메시지"/>
+	<button>보내기</button>
+	<ul id="content">
+	</ul>
+</body>
+</html>
