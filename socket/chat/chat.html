@@ -2,7 +2,11 @@
 <html>
 <head>
 	<title>Chat Chat </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta charset="utf8"/>
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
 		$(function(){
@@ -15,9 +19,11 @@
 				output += '	  <strong>' + data.name + ' : </strong>';
 				output += 		data.message;
 				output += ' </p>';
-				//output +=	'	<p>' + data.date + '</p>';
+				output +=	'	<p>' + data.date + '</p>';
 				output +=	'</li>';
 				$(output).prependTo('#content');
+				// mobile
+				$('#content').listview('refresh');
 			});
 
 			$('button').click(function(){
@@ -31,13 +37,28 @@
 	</script>
 </head>
 <body>
-	<img style="width:200px" src="https://cdn.namuwikiusercontent.com/47/476c72a75e8d38247c4a21ae1fbcd8dab3e1112f94fbdfcae76c3e0f0b16135c.jpg?e=1483760025&k=mf_VJMeclp0GYj_8G_oWRQ">
-	<h1>하시와 채팅 합시다<h1>	
-	<hr>
-	<input id="name" placeholder="이름"/>
-	<input id="message" placeholder="메시지"/>
-	<button>보내기</button>
-	<ul id="content">
-	</ul>
+	<div data-role='page'>
+		<div data-role="header">
+			<h1>chat chat</h1>
+		</div>
+		<div data-role="content">
+			<h3>닉네임</h3>
+			<input id="name"/>
+			<a data-role="button" href="#chatpage">채팅 시작</a>
+		</div>
+	</div>
+
+	<div data-role="page" id="chatpage">
+		<div data-role="header">
+			<h1>chat chat</h1>
+		</div>
+		<div data-role="content">
+			<input id="message"/>
+			<button>보내기</button>
+			<ul id="content" data-role="listview" data-inset="true">
+
+			</ul>
+		</div>
+	</div>
 </body>
 </html>
