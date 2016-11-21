@@ -1,0 +1,38 @@
+기존에 문자열과 변수를연결할 때
+"출력 : " + a + " ~"
+이런식으로 지저분한게 연결했었어
+
+템플릿 문자열을 쓰면
+`일반적인 문자열 ${a}`
+
+esc 밑에 있는 따옴표 같이 생긴 기호임 (그레이브라고 부름)
+
+console.log('filename:', __filename);
+이렇게하면 띄어쓰기로 구분되는데
+
+console.log(`filenmae: ${__filename}`);
+이렇게 쓸수 있다는 거임
+
+<code 3-3>
+console.time('alpha');
+let output = 1;
+for (let i = 1 ;i <= 10; i++){
+	output += i;
+}
+console.log(`Result: ${output}`);
+console.timeEnd('alpha');
+
+*
+REPL(node)를 켜서 process라고 입력하면 해당 객체가 어떤 속성을 가지고 있는지 나옴!
+process.exit() //프로그램 종료
+
+
+*
+exports.a = 10 ; // 변수 내보내기
+exports.b = function(){} // 함수 내보내기
+
+const myModule = require('./module.js');를 하면
+exports 객체가 나오게됨!
+
+myModule.a
+myModule.b()
