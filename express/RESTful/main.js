@@ -1,6 +1,6 @@
-var fs = require('fs');
-var express = require('express');
-var bodyParser = require('body-parser');
+"use strict"
+const express = require('express');
+const bodyParser = require('body-parser');
 
 // 더미 데이터베이스 구현
 var DummyDB = (function(){
@@ -43,23 +43,24 @@ var DummyDB = (function(){
 	return DummyDB;
 })();
 
-var app = express();
+// 서버 생성
+const app = express();
 
 // http://stackoverflow.com/questions/29960764/what-does-extended-mean-in-express-4-0
 app.use(bodyParser.urlencoded({extended:false}));
 
-app.get('/user', function(req, res){
+app.get('/user', (req, res) => {
 	res.send(DummyDB.get());	
 });
 
-app.get('/user/:id', function(req, res){
+app.get('/user/:id', (req, res) => {
 	res.send(DummyDB.get(req.params.id));	
 });
 
 // 꼭 x-www-form-urlencoded 로 요청해야댐
-app.post('/user', function(req, res){
-	var name = req.body.name;
-	var region = req.body.region;
+app.post('/user', (req, res) => {
+	const name = req.body.name;
+	const region = req.body.region;
 
 	if (name && region){
 		res.send(DummyDB.insert({
@@ -72,12 +73,12 @@ app.post('/user', function(req, res){
 	}
 });
 
-app.put('/user/:id', function(req, res){
-	var id = req.params.id;
-	var name = req.body.name;
-	var region = req.body.region;
+app.put('/user/:id', (req, res) => {
+	const id = req.params.id;
+	const name = req.body.name;
+	const region = req.body.region;
 
-	var item = DummyDB.get(id);
+	let item = DummyDB.get(id);
 	// 와 이런 코딩이 가능하네
 	item.name = name || item.name; 
 	item.region = region || item.region;
@@ -85,11 +86,11 @@ app.put('/user/:id', function(req, res){
 	res.send(item);
 });
 
-app.delete('/user/:id', function(req, res){
+app.delete('/user/:id', (req, res) => {
 	res.send(DummyDB.remove(req.params.id));
 });
 
-app.listen(8888, function(){
+app.listen(8888, () => {
 	console.log('server runngin...');
 });
 

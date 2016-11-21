@@ -5,17 +5,18 @@
 // 파일 전송을 위한 'multipart/form-data' 인코딩은 multiparty 미들웨어 사용해야댐
 // request 객체에 body 속성 부여됨!
 
-var fs = require('fs');
-var express = require('express');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const fs = require('fs');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
-var app = express();
+const app = express();
 
+// github page 검색해보기
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.get('/', function(req, res){
+app.get('/', (req, res) => {
 	if (req.cookies.auth){
 		res.send('<h1>Login Success</h1>');	
 	}
@@ -24,15 +25,16 @@ app.get('/', function(req, res){
 	}
 });
 
-app.get('/login', function(req,res){
-	fs.readFile('login.html', function(error, data){
-		res.send(data.toString());	
+app.get('/login', (req,res) => {
+	fs.readFile('login.html', 'utf8', (error, data) => {
+		//res.send(data.toString());	
+		res.send(data);	
 	});
 });
 
-app.post('/login', function(req, res){
-	var login = req.body.login;
-	var password = req.body.password;
+app.post('/login', (req, res) => {
+	const login = req.body.login;
+	const password = req.body.password;
 
 	console.log(login, password);
 	console.log(req.body);
@@ -46,7 +48,7 @@ app.post('/login', function(req, res){
 	}
 });
 
-app.listen(8888, function(){
+app.listen(8888, () => {
 	console.log('server running...');
 });
 

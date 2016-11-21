@@ -9,12 +9,12 @@
 */
 
 
-var express = require('express');
+const express = require('express');
 
-var app = express();
+const app = express();
 
-app.use(function(req, res){
-	var agent = req.header('User-Agent');
+app.use((req, res) => {
+	const agent = req.header('User-Agent');
 	
 	if (agent.toLowerCase().match(/chrome/)){
 		res.send('<h1>Hello Chrome...</h1>');	
@@ -23,6 +23,6 @@ app.use(function(req, res){
 	}
 });
 
-app.listen(8888, function(){
+app.listen(8888, () => {
 	console.log('server running');
 });

@@ -9,19 +9,19 @@
 	.all				: 이게 좀 특이한데, 모든 요청이 발생했을 때의 이벤트 리스너를 지정
 */
 
-var express = require('express');
+const express = require('express');
 
-var app = express();
+const app = express();
 
-app.get('/a', function(req, res){
+app.get('/a', (req, res) => {
 	res.send('<a href="/b">Go to B</a>');
 });
 
-app.get('/b', function(req, res){
+app.get('/b', (req, res) => {
 	res.send('<a href="/a">Go to A</a>');
 });
 
-app.listen(8888, function(){
+app.listen(8888, () => {
 	console.log('Server running...');
 });
 

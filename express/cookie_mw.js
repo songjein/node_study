@@ -1,18 +1,18 @@
 // cookie parser를 사용하면 req, res에 cookies 속성과 cookie()메서드가 부여됨
 // npm install cookie-parser로 설치해야됨
 
-var express = require('express');
-var cookieParser = require('cookie-parser');
+const express = require('express');
+const cookieParser = require('cookie-parser');
 
-var app = express();
+const app = express();
 
 app.use(cookieParser());
 
-app.get('/getCookie', function(req, res){
+app.get('/getCookie', (req, res) => {
 	res.send(req.cookies);
 });
 
-app.get('/setCookie', function(req, res){
+app.get('/setCookie', (req, res) => {
 	res.cookie('string', 'cookie');
 	res.cookie('json', {
 		name: 'cookie', 
@@ -21,7 +21,7 @@ app.get('/setCookie', function(req, res){
 	res.redirect('/getCookie');
 });
 
-app.listen(8888, function(){
+app.listen(8888, () => {
 	console.log('server running...');
 });
 

@@ -1,14 +1,14 @@
-var express = require('express');
+const express = require('express');
 
-var app = express();
+const app = express();
 
 // 라우팅 매개 변수 설정
-app.get('/page/:id', function(req, res){
-	var name = req.params.id;
+app.get('/page/:id', (req, res) => {
+	const name = req.params.id;
 
 	res.send('<h1>' + name + 'Page</h1>');
 });
 
-app.listen(8888, function(){
+app.listen(8888, () => {
 	console.log('server running...');
 });

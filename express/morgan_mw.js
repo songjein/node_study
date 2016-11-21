@@ -1,17 +1,17 @@
 // npm install morgan
-var express = require('express');
-var morgan = require('morgan');
+const express = require('express');
+const morgan = require('morgan');
 
-var app = express();
+const app = express();
 
 //app.use(morgan('combined'));
 //app.use(morgan(':method + :date'))
 app.use(morgan('short'));
-app.use(function(req, res){
+app.use((req, res) => {
 	res.send('<h1>express basic</h1>');
 });
 
-app.listen(8888, function(){
+app.listen(8888, () => {
 	console.log('server running');
 });
 

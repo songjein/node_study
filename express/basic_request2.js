@@ -1,15 +1,14 @@
-var express = require('express');
+const express = require('express');
 
-var app = express();
+const app = express();
 
-app.use(function(req, res, next){
-	var name = req.query.name;
-	var region = req.query.region;
+app.use((req, res, next) => {
+	const name = req.query.name;
+	const region = req.query.region;
 
 	res.send('<h1>' + name + '-' + region + '</h1>');
 });
 
-
-app.listen(8888, function(){
+app.listen(8888, () => {
 	console.log('server running...');
 });

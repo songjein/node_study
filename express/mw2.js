@@ -1,22 +1,23 @@
 // epxress 모듈은 request 이벤트 리스너를 연결하는데 .use 메서드를 쓰고 있음
 // 여러 장점이 있어
 
-var express = require('express');
+const express = require('express');
 
-var app = express();
+const app = express();
 
-app.use(function(req, res, next){
+// request 이벤트 리스너 등록
+app.use((req, res, next) => {
 	// 이런식으로 데이터 추가 가능
 	req.number = 52;
 	res.number = 333;
 	next();
 });
 
-app.use(function(req, res, next){
+app.use((req, res, next) => {
 	res.send('<h1>' + req.number + ' : ' + res.number + '</h1>');
 });
 
-app.listen(8888, function(){
+app.listen(8888, () => {
 	console.log('server running...');
 });
 
