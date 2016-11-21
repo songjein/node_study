@@ -1,4 +1,4 @@
-process.on('exit', function(code){
+process.on('exit', (code) => {
 	console.log('bye');
 });
 

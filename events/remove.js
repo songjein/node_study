@@ -1,6 +1,5 @@
-var onUncaughtException = function (error){
+const onUncaughtException = (error) => {
 	console.log('error!!');
-	
 	// 이벤트 제거~!
 	process.removeListener('uncaughtException', onUncaughtException);
 }
@@ -10,7 +9,7 @@ process.on('uncaughtException', onUncaughtException);
 
 
 // 에러 강제 발생
-var test = function () {
+const test = function () {
 	setTimeout(test, 2000);
 	error.error.error();
 };

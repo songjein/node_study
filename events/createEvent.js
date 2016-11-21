@@ -7,11 +7,14 @@
 */
 
 // EventEmitter 객체 생성
-var custom = new process.EventEmitter();
+// var custom = new process.EventEmitter();
+const EventEmitter = require('events');
+const custom = new EventEmitter();
 
 // 이벤트 연결
-custom.on('tick', function(code){
+custom.on('tick', (code) => {
 	console.log('이벤트 발생');
+	console.log(code);
 });
 
 // 이벤트 강제 발생
