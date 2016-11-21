@@ -1,10 +1,10 @@
-var http = require('http');
+const http = require('http');
 
-http.createServer(function(request, response){
+http.createServer((request, response) => {
 	if (request.headers.cookie){
 		// cookie 문자열을 객체로 바꾸기
-		var cookie = request.headers.cookie.split(';').map(function(element){
-			var element = element.split('=');	
+		const cookie = request.headers.cookie.split(';').map((element) => {
+			element = element.split('=');	
 			return {
 				key : element[0],
 				value : element[1]
@@ -20,6 +20,6 @@ http.createServer(function(request, response){
 
 		response.end('<h1>쿠키를 생성했습니다</h1>');
 	}
-}).listen(8888, function(){
+}).listen(8888, () => {
 	console.log('server running...');
 });
