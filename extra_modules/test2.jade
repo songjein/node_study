@@ -7,7 +7,25 @@ html
 		h1 #{name} .. !
 		h2= name
 		hr
+
+		- const name = "jein" 
+		p= name
+
 		- for (var i = 0; i < 10 ; i++){
 				p
 					a(href="http://naver.com") Go to naver #{i}
 		- }
+
+		- for (var j = 0 ; j < 10 ; j ++) {
+			- if (j % 2 == 0){
+			p 짝수 - #{j}
+			- } else {
+			p 홀수 - #{j}
+			- }
+		- } 
+
+		each value in [1, 2, 3, 4, 5] 
+			if (value % 2 == 0)
+				p 짝수 - #{value}
+			else 
+				p 홀수 - #{value}

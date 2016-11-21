@@ -1,8 +1,8 @@
 var fs = require('fs');
 var http = require('http');
 
-http.createServer(function (request, response){
-	fs.readFile('test.mp4', function(error, data){
+http.createServer((request, response) => {
+	fs.readFile('test.mp4', (error, data) => {
 		// image file 제공
 		// response.writeHead(200, {'Content-Type': 'image/jpeg'});	
 		// mp3
@@ -10,7 +10,7 @@ http.createServer(function (request, response){
 		response.writeHead(200, {'Content-Type': 'video/mp4'});	
 		response.end(data);
 	});	
-}).listen(8888, function(){
+}).listen(8888, () => {
 	console.log('Server running...');
 });
 

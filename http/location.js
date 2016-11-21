@@ -1,10 +1,11 @@
 var http = require('http');
 
-http.createServer(function(request, response){
+http.createServer((request, response) => {
 	response.writeHead(302, {'Location' : 'http://www.hanbit.co.kr'});
+	//response.writeHead(500);
 	response.end();
 
-}).listen(8888, function(){
+}).listen(8888, () => {
 	console.log('Server Running...');
 });
 

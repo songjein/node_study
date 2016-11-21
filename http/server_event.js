@@ -2,10 +2,10 @@
 var http = require('http');
 
 // 서버 객체 생성
-var server = http.createServer(function(request, response){
+var server = http.createServer((req, res) => {
 	console.log('Request On');
-	response.writeHead(200, {'Content-Type': 'text/html'});
-	response.end('<h1>Hello World..!</h1>');
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	res.end('<h1>Hello World..!</h1>');
 }).listen(8888);
 
 
@@ -14,16 +14,18 @@ var server = http.createServer(function(request, response){
 	createServer의 매개 변수로 입력 가능하다
 
 	// 서버 객체에 이벤트 연결
-	server.on('request', function(code){
-		console.log('Request On');
+	server.on('request', (req, res) => {
+		// 내용	
 	});
 */
 
-server.on('connection', function(code){
+
+// 웹브라우저가 스트림을 열고 커넥션을 할 때
+server.on('connection', (code) => {
 	console.log('Connection On');
 });
 
-server.on('close', function(code){
+server.on('close', (code) => {
 	console.log('Close On');
 });
 
