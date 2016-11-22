@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>socket</title>
+	<!-- app.js 에서 socketIo.listen(server)에 의해 제공되는 파일 -->
+	<!-- 이파일 같은 경우 모듈이 설치된 곳의 socket io의 client 부분 보면 있음 -->
+	<script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+	<script>
+		// web client에선 let, const 쓰지마!
+		var socket = io.connect(); // io가 connect될 때
+
+		// 클라이언트에서 쓰면 서버로 데이터 전달
+		setInterval(function(){
+			socket.emit('abcd', {
+				message: 'From Client'	
+			});
+		}, 1000);
+
+		// 클라이언트에서 쓰면 서버에서 보낸 데이터 받는 곳
+		socket.on('abcd', function(data){
+			console.log(data);	
+		});
+	</script>
+</body>
+</html>

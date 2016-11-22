@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>socket</title>
+	<!-- app.js 에서 socketIo.listen(server)에 의해 제공되는 파일 -->
+	<!-- 이파일 같은 경우 모듈이 설치된 곳의 socket io의 client 부분 보면 있음 -->
+	<script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+	<button id="myButton">Click</button>
+	<script>
+		// web client에선 let, const 쓰지마!
+		var socket = io.connect(); // io가 connect될 때
+		var roomName = prompt('방 이름 :  ' );
+
+		// 클라이언트에게 방 배정
+		socket.emit('join', {
+			roomName: roomName	
+		});
+
+		// 버튼 클릭시 문자열 전달
+		var button = document.getElementById('myButton');
+		button.onclick = function(){
+			socket.emit('message', {
+				message: 'from client'	
+			});	
+		};
+		
+		// 소켓 이벤트 연결
+		socket.on('message', function(data){
+			alert(data.message);	
+		});
+	</script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 프레임 워크란
 Inverse of Control 제어 역전 방식으로 개발할 수 있게 하는 라이브러리
+'프로그램의 시작지점을 우리가 만드는지, 다른사람이 만드는지'
 
 지금까지는 모두 직접 가져와서 내부의 메서드를 호출하는 방식(제어)
 
@@ -11,6 +12,8 @@ http://expressjs.com/
 
 $ sudo npm install -g express-generator@4
 
+$ express '프로젝트 이름' 형태로 프로젝트 생성
+$ express '프로젝트 이름' 형태로 프로젝트 생성
 $ express '프로젝트 이름' 형태로 프로젝트 생성
 
 $ cd 프로젝트이름 && npm install 입력해서 관련 모듈 설치
