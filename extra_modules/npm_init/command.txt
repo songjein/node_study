@@ -15,6 +15,8 @@ npm install 모듈명 --save 옵션 주면됨
 
 그럼 dependencies 속성에 기록이 됨
 
+https://docs.npmjs.com/files/package.json
+을 참조
 
 ////////////////
 
