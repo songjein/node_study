@@ -1,0 +1,16 @@
+npm install pm2
+
+pm2 라고 입력시 관련 설명서
+
+pm2로 데몬 실행
+pm2 start app.js
+
+pm2 show 아이디
+
+pm2 monit
+
+pm2 list
+
+pm2 delete ~
+
+pm2 status
