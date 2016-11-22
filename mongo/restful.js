@@ -36,7 +36,7 @@ app.post('/product', (request, response) => {
 
   // 변수를 추출합니다.
   const name = body.name;
-  const price = body.price;
+  const price = Number(body.price);
 
   // 데이터를 저장합니다.
 	db.products.save({
@@ -71,7 +71,7 @@ app.put('/product/:id', (request, response) => {
 	}, (error, result) => {
 		// 데이터를 수정
 		if (request.body.name) { result.name = request.body.name; }
-		if (request.body.price) { result.price = request.body.price; }
+		if (request.body.price) { result.price = Number(request.body.price); }
 		
 		// 저장
 		db.products.save(result, (error, result) => {
