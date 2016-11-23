@@ -6,7 +6,8 @@ const http = require('http');
 // 객체 선언
 const app = express();
 const server = http.createServer(app);
-const io = socketIo.listen(server);
+const io = socketIo.listen(server);			// 이렇게 해도 io 객체가 떨어지나보네
+//const io = socketIo().attach(server);
 
 // 미들웨어 설정
 app.use(express.static(`${__dirname}/public`));

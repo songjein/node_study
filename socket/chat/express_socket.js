@@ -20,7 +20,7 @@ server.listen(8888);
 
 	// app.js
 	var app = express();
-	app.io = require('socket.io');
+	app.io = require('socket.io')();
 
 	// www 파일 
 	var server = http.createServer(app);
