@@ -1,0 +1,8 @@
+HTML5 canvas : html과 javascript만으로 도형을 그릴수 있는 html5의 기능
+
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+https://developer.mozilla.org/ko/docs/Web/HTML/Canvas
+
+사용 플러그인
+farbtastic color picker
+http://acko.net/blog/farbtastic-jquery-color-picker-plug-in/

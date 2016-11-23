@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="/farbtastic.css"/>
+	<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+	<Script src="/socket.io/socket.io.js"></script>
+	<script src="/farbtastic.js"></script>
+<script>
+	// Point 생성자 함수
+	// 이벤트 객체와 이벤트 발생 객체
+	function Point(event, target){
+		// 부모 문서 객체 기준으로 마우스 x, y 좌표
+		// 원래는 offsetX, offsetY 속성 이용하면 되는데, 구형 파이어폭스와 호환성 위해
+		this.x = event.pageX - $(target).position().left;
+		this.y = event.pageY - $(target).position().top;
+	}
+</script>
+	<Script>
+		$(function(){
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+
+			var width = 5;
+			var opacity = 1.0;
+			var pressure = 1.0;
+			var color = '#000000';
+			var isDown = false;		// 드래그 중인지 아닌지를 판단하기위한..!
+			var newPoint, oldPoint;
+
+			// UI 구성
+			$('#colorpicker').farbtastic(function(data){
+				color = data;	
+			});
+
+			// 이벤트 연결
+			canvas.addEventListener('mousedown', function(event){
+				isDown = true;
+				oldPoint = new Point(event, this); // mouse event에서는 눌리는 대상이 this인가봄
+			});
+
+			canvas.addEventListener('mouseup', function(){ isDown = false; });
+			canvas.addEventListener('mousemove', function(event){
+				if(isDown){
+					newPoint = new Point(event, this);	
+					socket.emit('draw', {
+						width: width,
+						color: color,
+						x1: oldPoint.x,
+						y1: oldPoint.y,
+						x2: newPoint.x,
+						y2: newPoint.y,
+					});
+					oldPoint = newPoint;
+				}	
+			});
+
+
+			$('#sliderA').change(function(){
+				width = $(this).val();	
+			});
+
+			$('#sliderB').change(function(){
+				opacity = $(this).val() / 100	;
+			});
+
+			// 소켓 이벤트를 연결 
+			var socket = io.connect();
+			socket.emit('join', '<%= room %>');
+			socket.on('line', function(data){
+				context.lineWidth = data.width;	
+				context.strokeStyle = data.color;
+				context.globalAlpha = opacity * pressure;
+				context.beginPath();
+				context.moveTo(data.x1, data.y1);
+				context.lineTo(data.x2, data.y2);
+				context.stroke();
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<table border="10">
+		<tr>
+			<td rowspan="3">
+				<canvas id="canvas" width="1200" height="800"></canvas>
+			</td>
+			<td height="200">
+				<div id="colorpicker"></div>
+			</td>
+		</tr>
+		<tr>
+			<td height="25">
+				<!-- 두께 -->
+				<input id="sliderA" type="range" min="0" max="20" value="5"/><br/>
+				<!-- 투명도 -->
+				<input id="sliderB" type="range" min="0" max="100" /><br/>
+			</td>
+		</tr>
+		<tr>
+			<td style="background: orange"></td>
+		</tr>
+	</table>
+</body>
+</html>

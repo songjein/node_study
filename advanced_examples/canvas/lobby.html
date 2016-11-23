@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lobby Page</title>
+	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+	<Script src="/socket.io/socket.io.js"></script>
+	<script>
+		$(function(){
+			// ajax 수행
+			// 이미 존재하는 room 채워 넣기
+			$.getJSON('/room', function(data){
+				$.each(data, function(index, item){
+					$('<button></button>').attr({
+						'data-room': item
+					}).text('Room Name: ' + item).appendTo('#container');
+				});	
+			});	
+
+			// Socket 처리
+			var socket = io.connect();
+			socket.on('create_room', function(data){
+				$('<button></button>').attr({
+					'data-room': data	
+				}).text('Room Number: ' + data).appendTo('#container');
+			});
+
+			// 이벤트를 연결
+			$('#container').on('click', 'button', function(){
+				var room = $(this).attr('data-room');	
+
+				location = '/canvas/' + room;
+			});
+
+			$('#create_room').click(function(){
+				var room = $('#room').val();	
+
+				socket.emit('create_room', room);
+
+				location = '/canvas/' + room;
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>realtime canvas example</h1>
+	<span> Room : </span>
+	<input id="room" />	
+	<button id="create_room">Create Room</button>
+	<hr/>
+	<div id="container">
+	</div>
+</body>
+</html>
