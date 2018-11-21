@@ -46,10 +46,10 @@ promise
 
 
 - 참고로, **then이 끝나고 나서 또다른 then을 체이닝**할 수 있다. then().then()... 과 같이
-	1. ES6는 이전 then의 return 값을 다음 then의 매개변수로 넘긴다
+	1. ES6는 이전 **then의 return 값을 다음 then의 매개변수로** 넘긴다
 	2. then 안에서 promise를 리턴하는 경우, 해당 promise가 수행 된 이후에, 다음 then이 호출된다
 
-	즉, 아래처럼 return이 동작을하고, 만약 return에 promise가 있었다면 promise의 리턴값이 전달
+	즉, 아래처럼 return이 동작을하고, **만약 return에 promise가 있었다면 promise의 리턴값이 전달**
 	```js
 	promise
 		.then((msg) => {
