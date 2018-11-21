@@ -86,10 +86,11 @@ function findAndSaveUser(Users) {
 			});
 		});
 	});
-}
+
 ```
 
-썼을 경우 (findOne 메서드가 프로미스 객체로 구현이 되었을 때 가능한 소리임)
+썼을 경우
+	- 물론 findOne 메서드가 **프로미스 객체로 구현**이 되었을 때 가능한 소리임
 ```js
 function findAndSaveUser(Users) {
 	Users.findOne({}) // 원래 2번째 파라미터로 전달했던 콜백을, then에 명시
