@@ -63,3 +63,48 @@ promise
 			console.error(err);	
 		});;
 	```
+
+- 위의 내용을 종합하는 실제 예시(promise를 안 썼을 경우와 썼을 경우)
+
+쓰지 않았을 경우
+```js
+function findAndSaveUser(Users) {
+	// 1 level
+	Users.findOne({}, (err, user) => {
+		if (err) {
+			return console.error(err);
+		}
+		user.name = 'zero'
+		// 2 level
+		user.save((err) => {
+			if (err) {
+				return console.err(err);
+			}
+			// 3 level (callback hell)
+			User.findOne({ gender: 'm' }, (err, user) => {
+				// ...
+			});
+		});
+	});
+}
+```
+
+썼을 경우 (findOne 메서드가 프로미스 객체로 구현이 되었을 때 가능한 소리임)
+```js
+function findAndSaveUser(Users) {
+	Users.findOne({}) // 원래 2번째 파라미터로 전달했던 콜백을, then에 명시
+		.then((user) => {
+			user.name = 'zero';
+			return user.save();
+		})
+		.then((uesr) => {
+			return Users.findOne({ gender: 'm' });
+		})
+		.then((user) => {
+			// ...
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+}
+```
