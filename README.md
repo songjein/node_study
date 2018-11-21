@@ -1,6 +1,6 @@
 # Node 정리
 - 2016년에 공부한 내용은 2016 폴더 아래로 다 옮겨버림!
-- 2018년 버전으로 새롭게 정리 (Node.js 교과서 참고)
+- 2018년 버전으로 새롭게 정리 (Node.js 교과서 참고, 이해 후 재구성)
 
 
 ## ES2015(ES6)
@@ -43,3 +43,23 @@ promise
 		- resolve는 API가 정상적으로 실행되었을 때 호출되는 콜백이라고 생각하면 된다.
 		- reject는 error가 발생했을 때 실행시키고 싶은 콜백을 의미한다.
 	2. promise **사용은 위 코드 주석**에 설명함
+
+
+- 참고로, **then이 끝나고 나서 또다른 then을 체이닝**할 수 있다. then().then()... 과 같이
+	1. ES6는 이전 then의 return 값을 다음 then의 매개변수로 넘긴다
+	2. then 안에서 promise를 리턴하는 경우, 해당 promise가 수행 된 이후에, 다음 then이 호출된다
+
+	즉, 아래처럼 return이 동작을하고, 만약 return에 promise가 있었다면 promise의 리턴값이 전달
+	```js
+	promise
+		.then((msg) => {
+			console.log(msg);
+			return 'hello';
+		})
+		.then((msg) => {
+			console.log(msg, 'me too'); // 'hello me too'
+		})
+		.catch((err) => {
+			console.error(err);	
+		});;
+	```
