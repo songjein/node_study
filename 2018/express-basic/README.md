@@ -36,3 +36,8 @@
 	- >, <, <=, >=는 의미 그대로 
 		- npm i express@>1.1.1 이면 얘보다 높은 버전 설치하라는 뜻
 - 그 외 @latest 혹은 @x 명시시 최신 버전 설치
+
+
+## express generator
+- npm i -g express-generator
+	- express project-name --view=pug
