@@ -6,13 +6,22 @@
 
 
 ## bin/www
+- 서버 실행 스크립트
 - http 모듈에 express 모듈 연결, 포트 지정
-- 맨위에 #!/usr/bin/env node 라고 주석 되어있음 (콘솔 명령어로 만들기)
+- 맨위에 #!/usr/bin/env node 라고 주석 되어있음 (콘솔 명령어로 만들기, 확장자 없이 실행)
 
 
 ## app.js
+- 서버의 핵심 역할 
 - 앱에 대한 설정은 app.set으로
 - 미들웨어 연결은 app.use로
+
+
+## routes
+- 서버의 실제 비즈니스 로직은 여기서!
+
+## views
+- html 부분은 여기에
 
 
 ## middleware의 next()
