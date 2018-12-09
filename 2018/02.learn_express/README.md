@@ -77,3 +77,32 @@
 	와 같이 작성하게 되면, 전달된 문자열로 서명된 쿠키를 만들 수 있다
 
 
+## static
+- 정적인 파일들을 제공해주는 미들웨어
+- 해당 파일들이 있는 폴더를 지정한다
+	```js
+	app.use(express.static(path.join(__dirname, 'public'))
+	```
+	과 같이 작성하게되면, public/stylesheets/style.css는 http://localhost:port/stylesheets/style.css로 접근가능
+- 자체적으로 정적 파일 라우터 기능을 수행하므로 최대한 위쪽에 배치해야
+	쓸데 없는 미들웨어들이 작업을 하지 않음
+	추천) morgan 다음에 배치, but 서비스에 따라 다름
+
+
+## express-session
+- 세션 관리용 미들웨어, **req.session** 생성
+- npm i express-session
+- 1.5 버전 이전에 cookie-parser와 의존관계 있어서, 항상 뒤에 배치해야 했었음 (지금은 x)
+- 옵션들
+	- resave: 요청이 왔을 때 세션에 수정사항이 생기지 않아도 세션을 다시 저장할지 여부 (???)
+	- saveUnitialized: 세션에 저장할 내역이 없더라도 세션을 저장할지 여부 (???)
+	- secret: 비밀키, cookie-parser의 비밀키과 같게 설정해야함 
+	- cookie: **세션 쿠키**(세션 관리 위해 클라이언트에게 보내는 쿠키)에 대한 설정
+			- maxAge, domain, path, expires, sameSite, httpOnly(클라에서 쿠키 확인x), secure(false->https아닌 환경 ok)
+				store(세션 정보 디비에 저장)
+- req.session.destroy(), 세션 한번에 삭제
+- req.sessionID (현재 세션 ID)
+
+
+## connect-flash
+- 그 외에 1회성 메시지 생성을 위한 connect-flash가 있다
