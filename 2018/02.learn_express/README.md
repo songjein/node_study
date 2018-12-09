@@ -1,7 +1,7 @@
 ## express basic
 - app.js: core server
 - public: static files can be accessed from outside
-- routes: server's logic
+- routes: business logic
 - views: html
 
 
@@ -31,18 +31,23 @@
 
 ## middleware의 next()
 - 다음 미들웨어로 넘어갈 수 있게 함
-- 기본기능 외에도 전달되는 파라미터에 따라 다른 행동을 함
-	1. router에 관한게 들어 갔을 때 --> (일련의 특수 기능 실행)
-	2. 그 외에 값을 넣었을 때 --> (나머지 미들웨어, 라우터를 건너 뛰고 바로 에러 핸들러로 이동)
-		- 이 부분이 설명이 참 이상함, 다음 예시를 보면 알겠지만 건너뛰는 느낌이 아님
-		---> 아, 일반적으로 에러 핸들러를 가장 아래 위치 시켜 놓고
-				 위에 중간중간에서 발생한느 에러를 받아 처리한다고함
-- 예시로, app.js 에서 router에 대한 app.use 처리가 다 끝난 이후에
-	404 에러 처리에 대한 미들웨어가 위치해 있는데 이부분을 유심히 보기
-		- 이 때 next(createError(404))와 같이 작성하면 바로 다음에 위치한 에러 핸들러에게 에러 객체를 보낼 수 있다
-		- 에러 핸들러 또한 미들웨어지만, 인자 개수가 다른(err, req, res, next)의 파라미터를 가진다 (app.js참고)
+- 기본기능 외에도 전달되는 파라미터에 따라 다른 행동을 함  
+	1. router에 관한게 들어 갔을 때 --> (일련의 특수 기능 실행)  
+	2. 그 외에 값을 넣었을 때 --> (나머지 미들웨어, 라우터를 건너 뛰고 바로 에러 핸들러로 이동)  
+		- 이 부분이 설명이 참 이상함, 다음 예시를 보면 알겠지만 건너뛰는 느낌이 아님  
+		---> 아, 일반적으로 에러 핸들러를 가장 아래 위치 시켜 놓고  
+				 위에 중간중간에서 발생한느 에러를 받아 처리한다고함  
+- 예시로, app.js 에서 router에 대한 app.use 처리가 다 끝난 이후에  
+	404 에러 처리에 대한 미들웨어가 위치해 있는데 이부분을 유심히 보기  
+		- 이 때 next(createError(404))와 같이 작성하면 바로 다음에 위치한 에러 핸들러에게 에러 객체를 보낼 수 있다  
+		- 에러 핸들러 또한 미들웨어지만, 인자 개수가 다른(err, req, res, next)의 파라미터를 가진다 (app.js참고)  
 			- err 매개변수로 next()에 넣어준 인자가 전달됨
 
+
+## app.use(address, router)
+- routing 미들웨어를 보면 첫 인자가 주소인데,
+- 이렇게 주소를 명시하면 특정 주소에 해당할 경우에만(+메서드까지 일치) 미들웨어가 동작토록 할 수 있다.
+- use 외에도 get, post, put, patch, delete 메서드를 사용할 수 있다
 
 ## morgan 
 - 요청에 대한 정보 콘솔에 기록
@@ -97,8 +102,8 @@
 	- resave: 요청이 왔을 때 세션에 수정사항이 생기지 않아도 세션을 다시 저장할지 여부 (???)
 	- saveUnitialized: 세션에 저장할 내역이 없더라도 세션을 저장할지 여부 (???)
 	- secret: 비밀키, cookie-parser의 비밀키과 같게 설정해야함 
-	- cookie: **세션 쿠키**(세션 관리 위해 클라이언트에게 보내는 쿠키)에 대한 설정
-			- maxAge, domain, path, expires, sameSite, httpOnly(클라에서 쿠키 확인x), secure(false->https아닌 환경 ok)
+	- cookie: **세션 쿠키**(세션 관리 위해 클라이언트에게 보내는 쿠키)에 대한 설정  
+			- maxAge, domain, path, expires, sameSite, httpOnly(클라에서 쿠키 확인x), secure(false->https아닌 환경 ok)  
 				store(세션 정보 디비에 저장)
 - req.session.destroy(), 세션 한번에 삭제
 - req.sessionID (현재 세션 ID)
