@@ -111,3 +111,58 @@
 
 ## connect-flash
 - 그 외에 1회성 메시지 생성을 위한 connect-flash가 있다
+
+
+## router 
+- 라우터에 대해서 좀 더 자세히
+- routes/ 밑에 있는 js 파일 참고
+- router = express.Router() 객체로 만들고, 마지막에 module.exports = router; 로 모듈화
+- app.use 처럼 router 하나에 미들웨어 여러개 붙이는 것이 가능
+	```js
+	router.get('/', middleware1, middleware2, middleware3);
+	```
+	이렇게 연달아 여러개의 미들웨어를 전달하면 순차적 실행
+	ex) 게시글을 보여주기 전에 로그인 체크
+- 정말 조심해야 하는 것
+	- 라우터에서는 반드시 요청에 대한 응답을 보내거나 에러 핸들러로 요청을 넘겨야 한다고함
+	- 응답을 보내지 않으면 브라우저는 계속 기다리다가 타임아웃을 내버림
+- next 함수에 'route' 인자를 전달하면 특수 동작
+	- 라우터에 연결된 나머지 미들웨어를 건너 뛸 수 있음
+	```js
+	router.get('/', function(req, res, next) {
+		next('route');
+	}, function(req, res, next) {
+		console.log('실행x');	
+		next();
+	}, function(req, res, next) {
+		console.log('실행x');	
+		next();
+	});
+
+	router.get('/', function(req, res) {
+		console.log('실행o');	
+		res.render('index', { title: 'Express' });
+	});
+	```
+	이렇게 하면 첫 번째 미들웨어만 실행되고 바로 주소가 일치하는 다음 라우터로 넘어감
+- **URL params**
+	```js
+	router.get('/users/:id', function(req, res) {
+		console.log(req.params.id, req.query);	
+	});
+	```
+	이렇게 유알엘 파라미터는 **req.params**.id 처럼 접근 가능
+	GET params의 경우엔 **req.query**.x 로 접근!
+	단, 다른 static한 라우터들을 방해하지 않도록 맨 뒤에 위치시킬 것
+- **Response Methods**
+	- res.send(버퍼 또는 문자열 또는 HTML 또는 JSON)
+	- res.sendFile(파일 경로);
+	- res.json(JSON 데이터);
+	- res.redirect(주소);
+	- res.render('템플릿 파일 경로', {변수});
+	- res.status(404).send('Not Found') 처럼 사이에 status 코드 표기 가능
+
+
+
+
+
