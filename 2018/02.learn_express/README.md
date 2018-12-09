@@ -163,6 +163,6 @@
 	- res.status(404).send('Not Found') 처럼 사이에 status 코드 표기 가능
 
 
-
-
-
+## template engine / pug vs. ejs
+- 걍 pug는 쓰레기인거같다(루비가 익숙하면 쉬울 거라고 써있는데 전혀 + 억지스럽기만함)
+- ejs가 그나마 다른 언어 프레임워크랑 비슷하고, 자연스러운데 어차피 vue쓸거라서 여긴 생략
