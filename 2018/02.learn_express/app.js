@@ -33,6 +33,19 @@ app.use(session({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', function(req, res, next) {
+	console.log('메서드 상관없이');
+	next();
+});
+app.get('/', function(req, res, next) {
+	console.log('get 메서드');
+	next();
+});
+app.post('/data', function(req, res, next) {
+	console.log('post 메서드');
+	next();
+});
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
