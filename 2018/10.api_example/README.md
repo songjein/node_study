@@ -25,8 +25,8 @@ touch .env
 ```
 
 ## JWT 참고자료
-- [passport와 jwt를 같이](https://medium.com/front-end-weekly/learn-using-jwt-with-passport-authentication-9761539c4314)
 - [passport + jwt](https://www.sitepoint.com/spa-social-login-google-facebook/)
+- [passport와 jwt를 같이](https://medium.com/front-end-weekly/learn-using-jwt-with-passport-authentication-9761539c4314)
 - [vue + express](http://blog.jeonghwan.net/2018/03/26/vue-authentication.html)
 - [passport + jwt](http://webframeworks.kr/tutorials/expressjs/auth_log_in_out/)
 - [jwt 로그아웃에 대하여](https://medium.com/devgorilla/how-to-log-out-when-using-jwt-a8c7823e8a6)

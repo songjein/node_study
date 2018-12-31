@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/img', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false } ));
-app.use(passport.initialize()); // req에 passport 설정 삽입
+app.use(passport.initialize()); 
 
 app.use('/', pageRouter);
 app.use('/auth', authRouter);
@@ -39,7 +39,6 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res) => {
-	//res.locals.error = req.app.get('env') === 'development' ? err: {}; 
 	res.status(err.status || 500).json({
 		code: err.status || 500,
 		message: err.message,
