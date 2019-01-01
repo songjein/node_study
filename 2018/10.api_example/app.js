@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
@@ -26,6 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false } ));
 app.use(passport.initialize()); 
 
+app.user(cors());
 app.use('/', pageRouter);
 app.use('/auth', authRouter);
 //app.use('/post', postRouter);
