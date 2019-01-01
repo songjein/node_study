@@ -26,6 +26,9 @@ npm i dotenv
 touch .env
 ```
 
+## TODO
+- 토큰 만료시 갱신 코드(?)
+
 ## JWT 참고자료
 - [passport + jwt](https://www.sitepoint.com/spa-social-login-google-facebook/)
 - [passport와 jwt를 같이](https://medium.com/front-end-weekly/learn-using-jwt-with-passport-authentication-9761539c4314)
@@ -42,3 +45,11 @@ touch .env
 - cors() 미들웨어 추가시
 	- Access-Controll-Allow-Origin: * 
 		- 모든 클라이언트 허용
+
+
+## API 응답 코드는 항상 정리해두기 (아래는 예시)
+- 200 : JSON 데이터입니다
+- 401 : 유효하지 않은 토큰
+- 410 : 새로운 버전이 나왔습니다.
+- 419 : 토큰 만료
+- 429 : 1분에 한번만 요청가능
