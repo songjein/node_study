@@ -57,6 +57,8 @@ touch .env
 	-> 로그인 시 passport.authenticate(정책명, params...) 호출 
 	-> 내부적으로 req.user 심어짐 (authenticate에 전달했던 콜백이 불리면서 - 그 안에 login 함수가 있고)
 	-> 마지막 미들웨어를 통한(generateUserToken) 토큰 발급(return)!
+
+	--> passport.authenticate('jwt', { session: false }) 를 통해 요청 메시지에 발급된 토큰이 들어있는지 확인 후 서비스 이용 허용
 	```
 - 대충 이런 흐름임을 알 수 있다(끝!!!)
 
