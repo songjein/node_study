@@ -4,7 +4,7 @@
 
 
 ## ES2015(ES6)
-- 이해하기 힘들었던 promise, async/await을 정리한다
+- 이해하기 힘들었던 promise, async/await  정리한다
 
 ### Promise
 - ES6 부터 자바스크립트와 노드의 **API**들이 '콜백 대신에!! **프로미스 기반으로 재구성**됨'(책에서 이래 설명)
@@ -130,3 +130,20 @@ function findAndSaveUser(Users) {
 	  /* stuff */
 	});
 	```
+
+## async, await
+- 요건 그냥 promise로 구현된 객체를 호출할 때 호출문이 포함된 함수에 async를 붙여주고
+  호출문 앞에 await을 붙여줘서, 굳이 then 이 없어도 흐름을 쉽게 관리할 수 있게 해준다
+  ```js
+  async () => {
+  	const result = await User.findOne({...}); // then에서 result를 받을 필요가 없다.
+  }
+  ```
+  - resolve 되는 것이 리턴 되는 것인지, 직접 리턴하는 것이 리턴되는 것인지는 확인해볼 필요가 있다.
+
+## 비구조화 할당
+- 객체 내에 있는 key:value pair를 변수로 꺼내어 쉽게 할당한다. 익숙해지면 매우 유용하다. 모듈을 임포트 하는 경우가 많기 때문에..
+  ```js
+  const { name, age } = require('person'); // module.exports = { name: 'jein', age: 10, email: 'jeinsong200@gmail.com' }
+  ```
+  - 이렇게 하면 name이라는 키를 꺼내어 변수로 만들고 값을 할당한다. 
