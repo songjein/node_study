@@ -56,7 +56,7 @@ router.post('/login', (req, res, next) => {
 				console.error(loginError);	
 				return next(loginError);
 			}	
-			next();
+			next(); // 로그인이 제대로 되었을 경우에만 next로 넘어가게!
 		});
 	})(req, res, next);
 }, generateUserToken);
