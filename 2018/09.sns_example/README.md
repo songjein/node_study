@@ -21,6 +21,8 @@ npm i dotenv
 touch .env
 ```
 
+## DB 이론
+- [PRI, UNI, MUL](https://m.blog.naver.com/PostView.nhn?blogId=kshkyc&logNo=220366433383&proxyReferer=https%3A%2F%2Fwww.google.com%2F)
 
 ## Sequelize 사용법
 - [공홈문서](http://docs.sequelizejs.com/manual/tutorial/migrations.html)
