@@ -32,6 +32,7 @@ touch .env
   (제대로 아는 사람이 하나도 없는 듯)
     - 해당 내용을 다룬 외국 블로그를 찾음 [링크](https://medium.com/@andrewoons/how-to-define-sequelize-associations-using-migrations-de4333bf75a7)
     - [추가자료](https://codeburst.io/sequelize-migrations-setting-up-associations-985d29b61ee7)
+    - [추가자료2](https://www.duringthedrive.com/2017/05/06/models-migrations-sequelize-node/)
     
 - [필독-migrations-model은 직접 수정해서 싱크 맞춰야함](https://stackoverflow.com/questions/21105748/sequelize-js-how-to-use-migrations-and-sync)
     - 결론: migration up/down 작성 후, 해당 내용대로 models를 직접 수정해주자. 그런 다음 db:migrate으로 마무리
