@@ -30,6 +30,7 @@ touch .env
     - [datatype](http://docs.sequelizejs.com/manual/tutorial/models-definition.html)
     - [association](http://docs.sequelizejs.com/class/lib/associations/base.js~Association.html)
     - [association mixin](https://stackoverflow.com/questions/49467654/what-methods-mixins-sequelize-adds-to-the-models-when-an-association-is-made)
+- [필수예제!!!](https://github.com/sequelize/express-example/)
 - 마이그레이션 및 association을 다룬 곳
     - 해당 내용을 다룬 외국 블로그를 찾음 [링크](https://medium.com/@andrewoons/how-to-define-sequelize-associations-using-migrations-de4333bf75a7)
     - [추가자료](https://codeburst.io/sequelize-migrations-setting-up-associations-985d29b61ee7)
