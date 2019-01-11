@@ -52,6 +52,13 @@ touch .env
 
 - CASCADE : Delete or update the row from the parent table, and automatically delete or update the matching rows in the child table. ... If an ON UPDATE CASCADE or ON DELETE CASCADE subclause is only defined for one FOREIGN KEY clause, cascading operations fail with an error.2015. 3. 18.
 
+- m:n relation 을 구현할 때 매우 매우 매우 애를 먹었는데, 문서에도 명확이 뭐라 안나와 있고, 블로그들을 다 뒤져봐도 뭔가 모자라는... 
+    - 이제 확실히 알 것 같은데, 일단 조인 테이블을 '모델'로 따로 정의를 해야 했음..
+    - migration에 createTable하는 것들은 무조건 '모델'에 정의 및 추가를 해야한다. 
+    - trough 옵션에 스트링(ex. UserProjects)를 전달하길래 테이블 이름을 직접 명시하는구나 라고 착각 했지만
+    - 그게 아니라 model로 정의하고 조인테이블의 모델명을 명시하는 것이었던 것 같다. 
+    - [직접 구현한 참고소스](https://github.com/songjein/FeeelDesign)
+
 ## 로그인 구현
 - sudo apt-get install g++ make 필요했음
 ```
