@@ -34,8 +34,8 @@ touch .env
 - 마이그레이션 및 association을 다룬 곳
     - [첫 예제 링크](https://medium.com/@andrewoons/how-to-define-sequelize-associations-using-migrations-de4333bf75a7)
     	- migration을 이용해서, m:n relation을 구현하는데 매우 많이 애를 먹었다.
-	- 이 블로그에선 다 잘 다뤘지만, 조인테이블에 2개의 키를 primary key로 선언하는 잘못된 예시를 보여줌. 
-	- 밑에 자료 2개를 참고하면 references를 이용해 foreign key로 선언하는 것을 볼 수 있고, 곰곰히 생각하면 그게 자연스럽다.
+		- 이 블로그에선 다 잘 다뤘지만, 조인테이블에 2개의 키를 primary key로 선언하는 잘못된 예시를 보여줌. 
+		- 밑에 자료 2개를 참고하면 references를 이용해 foreign key로 선언하는 것을 볼 수 있고, 곰곰히 생각하면 그게 자연스럽다.
     - [추가자료](https://codeburst.io/sequelize-migrations-setting-up-associations-985d29b61ee7)
     - [추가자료2](https://www.duringthedrive.com/2017/05/06/models-migrations-sequelize-node/)
     - [참고 공식 문서](http://docs.sequelizejs.com/manual/tutorial/associations.html#n-m)
