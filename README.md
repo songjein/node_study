@@ -7,6 +7,7 @@
 - 이해하기 힘들었던 module, promise, async/await  정리한다
 
 ### Module
+- [참고자료 0](https://stackoverflow.com/questions/40294870/module-exports-vs-export-default-in-node-js-and-es6)
 - [참고자료 1](https://enyobook.wordpress.com/2016/08/17/export-default%EC%97%90-%EB%8C%80%ED%95%B4/)
 - [참고자료 2](https://www.zerocho.com/category/ECMAScript/post/579dca4054bae71500727ab9)
 
