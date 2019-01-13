@@ -66,49 +66,49 @@ promise
 
 - 위의 내용을 종합하는 실제 예시(promise를 안 썼을 경우와 썼을 경우)
 
-쓰지 않았을 경우
-```js
-function findAndSaveUser(Users) {
-	// 1 level
-	Users.findOne({}, (err, user) => {
-		if (err) {
-			return console.error(err);
-		}
-		user.name = 'zero'
-		// 2 level
-		user.save((err) => {
+	- 쓰지 않았을 경우
+	```js
+	function findAndSaveUser(Users) {
+		// 1 level
+		Users.findOne({}, (err, user) => {
 			if (err) {
-				return console.err(err);
+				return console.error(err);
 			}
-			// 3 level (callback hell)
-			User.findOne({ gender: 'm' }, (err, user) => {
-				// ...
+			user.name = 'zero'
+			// 2 level
+			user.save((err) => {
+				if (err) {
+					return console.err(err);
+				}
+				// 3 level (callback hell)
+				User.findOne({ gender: 'm' }, (err, user) => {
+					// ...
+				});
 			});
 		});
-	});
 
-```
+	```
 
-썼을 경우
-	- 물론 findOne 메서드가 **프로미스 객체로 구현**이 되었을 때 가능한 소리임
-```js
-function findAndSaveUser(Users) {
-	Users.findOne({}) // 원래 2번째 파라미터로 전달했던 콜백을, then에 명시
-		.then((user) => {
-			user.name = 'zero';
-			return user.save();
-		})
-		.then((uesr) => {
-			return Users.findOne({ gender: 'm' });
-		})
-		.then((user) => {
-			// ...
-		})
-		.catch((err) => {
-			console.log(err);
-		});
-}
-```
+	- 썼을 경우
+		- 물론 findOne 메서드가 **프로미스 객체로 구현**이 되었을 때 가능한 소리임
+	```js
+	function findAndSaveUser(Users) {
+		Users.findOne({}) // 원래 2번째 파라미터로 전달했던 콜백을, then에 명시
+			.then((user) => {
+				user.name = 'zero';
+				return user.save();
+			})
+			.then((uesr) => {
+				return Users.findOne({ gender: 'm' });
+			})
+			.then((user) => {
+				// ...
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}
+	```
 
 - 그러면, Promise에 추가적인 매개변수는 어떻게 전달해? [참고자료](https://stackoverflow.com/questions/35318442/how-to-pass-parameter-to-a-promise-function)
 	- function으로 wrapping 한다
@@ -139,6 +139,8 @@ function findAndSaveUser(Users) {
   	const result = await User.findOne({...}); // then에서 result를 받을 필요가 없다.
   }
   ```
+  - 이젠, promise가 resolve 될 때까지 기다린다
+  	- 대신 에러를 처리하기 위해선 try {} catch (error) {} 로 감싸주어야한다.
   - resolve 되는 것이 리턴 되는 것인지, 직접 리턴하는 것이 리턴되는 것인지는 확인해볼 필요가 있다.
   	- promise에서 그친다면 resolve에 전달된 파라미터가 리턴되어 저장되고
 	- promise호출 뒤에 .then()을 체이닝 해서 resolve값을 처리했다면, then() 안의 리턴 값이 저장된다
