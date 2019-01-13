@@ -98,7 +98,7 @@ promise
 				user.name = 'zero';
 				return user.save();
 			})
-			.then((uesr) => {
+			.then((uesr) => { // 이부분은 원래 save의 콜백이었음
 				return Users.findOne({ gender: 'm' });
 			})
 			.then((user) => {
@@ -109,6 +109,7 @@ promise
 			});
 	}
 	```
+	- 재차 강조하면, 원래는 findOne의 callback params였던 것을, 이젠 then에 명시하고 있으며, 그 안에서 성공시 resolve를 호출해 줄거고, 그렇게 되면 then에 전달한 callback이 실행된다.
 
 - 그러면, Promise에 추가적인 매개변수는 어떻게 전달해? [참고자료](https://stackoverflow.com/questions/35318442/how-to-pass-parameter-to-a-promise-function)
 	- function으로 wrapping 한다
