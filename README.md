@@ -153,6 +153,9 @@ function findAndSaveUser(Users) {
 	});
 
 	(async() => { 
+		const onlyPromise = await promise;
+		console.log('onlyPromise:' , onlyPromise);
+		
 		const promiseAndThen = await promise
 		.then((msg) => {
 			return 'hello';
@@ -164,10 +167,6 @@ function findAndSaveUser(Users) {
 			console.error(err);	
 		});
 		console.log(promiseAndThen);
-
-		const onlyPromise = await promise;
-		console.log('onlyPromise:' , onlyPromise);
-
 	})()
 	```
 ## 비구조화 할당
