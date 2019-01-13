@@ -142,7 +142,34 @@ function findAndSaveUser(Users) {
   - resolve 되는 것이 리턴 되는 것인지, 직접 리턴하는 것이 리턴되는 것인지는 확인해볼 필요가 있다.
   	- promise에서 그친다면 resolve에 전달된 파라미터가 리턴되어 저장되고
 	- promise호출 뒤에 .then()을 체이닝 해서 resolve값을 처리했다면, then() 안의 리턴 값이 저장된다
+	```js
+	const condition = true;
+	promise = new Promise((resolve, reject) => {
+		if (condition) {
+			resolve('success');	
+		} else {
+			reject('fail');	
+		}
+	});
 
+	(async() => { 
+		const promiseAndThen = await promise
+		.then((msg) => {
+			return 'hello';
+		})
+		.then((msg) => {
+			return msg + ' me too';
+		})
+		.catch((err) => {
+			console.error(err);	
+		});
+		console.log(promiseAndThen);
+
+		const onlyPromise = await promise;
+		console.log('onlyPromise:' , onlyPromise);
+
+	})()
+	```
 ## 비구조화 할당
 - 객체 내에 있는 key:value pair를 변수로 꺼내어 쉽게 할당한다. 익숙해지면 매우 유용하다. 모듈을 임포트 하는 경우가 많기 때문에..
   ```js
