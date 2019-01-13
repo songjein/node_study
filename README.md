@@ -4,7 +4,10 @@
 
 
 ## ES2015(ES6)
-- 이해하기 힘들었던 promise, async/await  정리한다
+- 이해하기 힘들었던 module, promise, async/await  정리한다
+
+### Module
+- [참고자료](https://enyobook.wordpress.com/2016/08/17/export-default%EC%97%90-%EB%8C%80%ED%95%B4/)
 
 ### Promise
 - ES6 부터 자바스크립트와 노드의 **API**들이 '콜백 대신에!! **프로미스 기반으로 재구성**됨'(책에서 이래 설명)
