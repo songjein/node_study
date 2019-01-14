@@ -37,6 +37,7 @@ touch .env
 - [jwt 로그아웃에 대하여](https://medium.com/devgorilla/how-to-log-out-when-using-jwt-a8c7823e8a6)
 - [velopert blog](https://velopert.com/2448)
 - [oauth passport with jwt](https://stackoverflow.com/questions/40828955/passport-jwt-google-strategy-disable-session-res-send-after-google-cal)
+- [jwt 개념](https://velopert.com/2389)
 
 
 ## 메모
