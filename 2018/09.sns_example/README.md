@@ -27,6 +27,7 @@ touch .env
 ## Sequelize 사용법
 - 내가 깨달은 기본적인 플로우([마이그레이션](http://docs.sequelizejs.com/manual/tutorial/migrations.html)에 기반한)
 	- 모델 이름은 단수(대문자 시작), 테이블 이름은 복수
+		- 단, migration할 때 references 옵션 안의 model키의 value값은 복수형태로 써야함
 	```
 	1. sequelize model:generate --name 모델이름(대문자시작) --attributes 기본 컬럼들 명시
 	2. sequelize db:migrate
