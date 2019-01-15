@@ -25,6 +25,13 @@ touch .env
 - [PRI, UNI, MUL](https://m.blog.naver.com/PostView.nhn?blogId=kshkyc&logNo=220366433383&proxyReferer=https%3A%2F%2Fwww.google.com%2F)
 
 ## Sequelize 사용법
+- 내가 깨달은 기본적인 플로우([마이그레이션](http://docs.sequelizejs.com/manual/tutorial/migrations.html)에 기반한)
+	1. sequelize model:generate --name 모델이름(대문자시작) --attributes 기본 컬럼들 명시
+	2. sequelize db:migrate
+	3. sequelize migration:generate --name 마이그레이션이름(자유)
+	4. migration 파일 수정
+	5. 해당 변경사항 model에 복붙
+	6. sequelize db:migrate
 - [공홈문서](http://docs.sequelizejs.com/manual/tutorial/migrations.html)
     - [queryInterface](http://docs.sequelizejs.com/class/lib/query-interface.js~QueryInterface.html)
     - [datatype](http://docs.sequelizejs.com/manual/tutorial/models-definition.html)
