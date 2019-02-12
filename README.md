@@ -140,6 +140,7 @@ promise
 ## async, await
 - [모질라 문서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/async_function)
 - [걍 볼만한 코드](https://www.zerocho.com/category/MongoDB/post/59b6228e92f5830019d41ac4)
+- [왜 굳이 async가 있어야 되느냐에 대한 질의응답](https://stackoverflow.com/questions/42624647/why-use-async-when-i-have-to-use-await)
 - 요건 그냥 promise로 구현된 객체를 호출할 때 호출문이 포함된 함수에 async를 붙여주고
   호출문 앞에 await을 붙여줘서, 굳이 then 이 없어도 흐름을 쉽게 관리할 수 있게 해준다
   ```js
