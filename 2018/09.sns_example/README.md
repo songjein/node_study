@@ -16,6 +16,7 @@ npm i multer
 ```
 
 ## 환경 변수 설정
+- 추가로 sequelize init시 생성되는 config/를 수정해줘야함
 ```
 npm i dotenv
 touch .env
